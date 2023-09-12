@@ -1,5 +1,10 @@
 import './App.css';
 import React, {useState} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp, faFacebook } from '@fortawesome/free-brands-svg-icons';
+
+
+
 
 const App = () => {
   const url = "https://api.quotable.io/random";
@@ -23,6 +28,20 @@ const App = () => {
     alert('copied')
   }
 
+  //social media share buttons
+
+  const handleWhatsAppShare = () => {
+    const text = encodeURIComponent(quote);
+    const url = `https://api.whatsapp.com/send?text=${text}`;
+    window.open(url, '_blank');
+  };
+  const handleFacebookShare = () => {
+    const encodedQuote = encodeURIComponent(quote);
+    const encodedURL = encodeURIComponent(window.location.href);
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodedURL}&quote=${encodedQuote}`;
+    window.open(url, '_blank');
+  };
+
   return (
     <>
       <h1>Quote Generator React App</h1>
@@ -33,7 +52,16 @@ const App = () => {
           <button onClick={copy} className="btn">Copy</button>
           <button onClick={generateQuote}>Generate Another Quote</button>
         </div>
+        <div className="share">
+          <button className="share-icon" onClick={handleWhatsAppShare}>
+           <FontAwesomeIcon icon={faWhatsapp} />
+          </button>
+          <button className="share-icon" onClick={handleFacebookShare}>
+           <FontAwesomeIcon icon={faFacebook} />
+          </button>
+        </div>
       </div>
+
     </>
   )
 }

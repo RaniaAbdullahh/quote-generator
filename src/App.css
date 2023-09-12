@@ -79,3 +79,17 @@ h1{
     grid-column: 2/4;
     grid-row: 1;
 }
+.share{
+
+    padding: 5px 0px 5px 200px;
+
+}
+.share-icon{
+    margin:10px 0px 5px 5px ;
+
+    cursor: pointer;
+    background-color: #56cbdb;
+    width: 50px;
+    height: 30px;
+    border-radius: 50px;
+}
